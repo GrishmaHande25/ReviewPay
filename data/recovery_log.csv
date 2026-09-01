@@ -1,0 +1,1 @@
+timestamp,transaction_id,amount,action,result,recovered_amount,attempt_number,message,previous_hash,record_hash
