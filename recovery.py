@@ -9,7 +9,7 @@ import pandas as pd
 
 from datetime import datetime
 
-from backend.ai_agent import diagnose_payment
+from ai_agent import diagnose_payment
 
 
 BASE_DIR = os.path.dirname(
