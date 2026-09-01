@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RevivePay - AI Revenue Recovery</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+
+<body>
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            R
+        </div>
+
+        <div>
+            <h2>RevivePay</h2>
+
+            <span>
+                AI Revenue Recovery
+            </span>
+        </div>
+
+    </div>
+
+
+    <nav class="main-nav">
+
+        <a
+            href="#dashboard-section"
+            class="nav-link active"
+            data-section="dashboard-section"
+        >
+            <span class="nav-icon">⌂</span>
+            <span>Dashboard</span>
+        </a>
+
+
+        <a
+            href="#risk-section"
+            class="nav-link"
+            data-section="risk-section"
+        >
+            <span class="nav-icon">△</span>
+            <span>At-Risk Payments</span>
+        </a>
+
+
+        <a
+            href="#analytics-section"
+            class="nav-link"
+            data-section="analytics-section"
+        >
+            <span class="nav-icon">▥</span>
+            <span>Analytics</span>
+        </a>
+
+
+        <a
+            href="#recovery-section"
+            class="nav-link"
+            data-section="recovery-section"
+        >
+            <span class="nav-icon">✦</span>
+            <span>AI Recovery</span>
+        </a>
+
+
+        <a
+            href="#audit-section"
+            class="nav-link"
+            data-section="audit-section"
+        >
+            <span class="nav-icon">☷</span>
+            <span>Audit Trail</span>
+        </a>
+
+    </nav>
+
+
+    <!-- BOTTOM NAVIGATION -->
+
+    <div class="sidebar-bottom">
+
+        <a
+            href="#help-section"
+            class="nav-link"
+            data-section="help-section"
+        >
+            <span class="nav-icon">?</span>
+            <span>How It Helps</span>
+        </a>
+
+
+        <a
+            href="#faq-section"
+            class="nav-link"
+            data-section="faq-section"
+        >
+            <span class="nav-icon">+</span>
+            <span>FAQ</span>
+        </a>
+
+
+        <a
+            href="#settings-section"
+            class="nav-link"
+            data-section="settings-section"
+        >
+            <span class="nav-icon">⚙</span>
+            <span>Settings</span>
+        </a>
+
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            <span>
+                System Online
+            </span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     DASHBOARD
+===================================================== -->
+
+<section
+    id="dashboard-section"
+    class="app-section active-section"
+>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div>
+
+            <div class="eyebrow">
+                AI-POWERED PAYMENT OPERATIONS
+            </div>
+
+            <h1>
+                Revenue Recovery Dashboard
+            </h1>
+
+            <p>
+                Detect. Diagnose. Recover. Measure.
+            </p>
+
+        </div>
+
+
+        <button
+            class="refresh-btn"
+            onclick="loadDashboard()"
+        >
+            ↻ Refresh
+        </button>
+
+    </header>
+
+
+    <!-- =================================================
+         KPI CARDS
+    ================================================= -->
+
+    <section class="stats">
+
+
+        <div class="stat-card">
+
+            <div class="stat-card-top">
+
+                <div class="stat-icon">
+                    ₹
+                </div>
+
+                <span class="stat-status">
+                    At Risk
+                </span>
+
+            </div>
+
+            <div class="stat-title">
+                Revenue At Risk
+            </div>
+
+            <div
+                class="stat-value"
+                id="revenueRisk"
+            >
+                ₹0
+            </div>
+
+            <div class="stat-description">
+                Failed payment value
+            </div>
+
+        </div>
+
+
+        <div class="stat-card success-card">
+
+            <div class="stat-card-top">
+
+                <div class="stat-icon">
+                    ✓
+                </div>
+
+                <span class="stat-status success-status">
+                    Recovered
+                </span>
+
+            </div>
+
+            <div class="stat-title">
+                Revenue Recovered
+            </div>
+
+            <div
+                class="stat-value"
+                id="revenueRecovered"
+            >
+                ₹0
+            </div>
+
+            <div class="stat-description">
+                Successfully recovered
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-card-top">
+
+                <div class="stat-icon">
+                    %
+                </div>
+
+                <span class="stat-status">
+                    Performance
+                </span>
+
+            </div>
+
+            <div class="stat-title">
+                Recovery Rate
+            </div>
+
+            <div
+                class="stat-value"
+                id="recoveryRate"
+            >
+                0%
+            </div>
+
+            <div class="stat-description">
+                Revenue recovery rate
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-card-top">
+
+                <div class="stat-icon">
+                    ↗
+                </div>
+
+                <span class="stat-status">
+                    Successful
+                </span>
+
+            </div>
+
+            <div class="stat-title">
+                Successful Recoveries
+            </div>
+
+            <div
+                class="stat-value"
+                id="successfulRecoveries"
+            >
+                0
+            </div>
+
+            <div class="stat-description">
+                Payments recovered
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         RECOVERY PRIORITY
+    ================================================= -->
+
+    <section class="priority-panel">
+
+        <div class="panel-heading">
+
+            <div>
+
+                <div class="panel-eyebrow">
+                    RISK OVERVIEW
+                </div>
+
+                <h2>
+                    Recovery Priority
+                </h2>
+
+                <p>
+                    Current distribution of failed payments
+                </p>
+
+            </div>
+
+
+            <span
+                class="count-badge"
+                id="priorityTotal"
+            >
+                0
+            </span>
+
+        </div>
+
+
+        <div class="priority-grid">
+
+
+            <!-- HIGH -->
+
+            <button
+                class="priority-card priority-high"
+                onclick="goToRiskFilter('High')"
+            >
+
+                <div class="priority-top">
+
+                    <span class="priority-dot"></span>
+
+                    <span>
+                        HIGH
+                    </span>
+
+                </div>
+
+
+                <div class="priority-number-row">
+
+                    <strong id="highRiskCount">
+                        0
+                    </strong>
+
+                    <span id="highRiskPercent">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <small>
+                    Immediate attention
+                </small>
+
+
+                <div class="mini-progress">
+                    <div id="highProgress"></div>
+                </div>
+
+            </button>
+
+
+            <!-- MEDIUM -->
+
+            <button
+                class="priority-card priority-medium"
+                onclick="goToRiskFilter('Medium')"
+            >
+
+                <div class="priority-top">
+
+                    <span class="priority-dot"></span>
+
+                    <span>
+                        MEDIUM
+                    </span>
+
+                </div>
+
+
+                <div class="priority-number-row">
+
+                    <strong id="mediumRiskCount">
+                        0
+                    </strong>
+
+                    <span id="mediumRiskPercent">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <small>
+                    Review recommended
+                </small>
+
+
+                <div class="mini-progress">
+                    <div id="mediumProgress"></div>
+                </div>
+
+            </button>
+
+
+            <!-- LOW -->
+
+            <button
+                class="priority-card priority-low"
+                onclick="goToRiskFilter('Low')"
+            >
+
+                <div class="priority-top">
+
+                    <span class="priority-dot"></span>
+
+                    <span>
+                        LOW
+                    </span>
+
+                </div>
+
+
+                <div class="priority-number-row">
+
+                    <strong id="lowRiskCount">
+                        0
+                    </strong>
+
+                    <span id="lowRiskPercent">
+                        0%
+                    </span>
+
+                </div>
+
+
+                <small>
+                    Monitor normally
+                </small>
+
+
+                <div class="mini-progress">
+                    <div id="lowProgress"></div>
+                </div>
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         AI BATCH RECOVERY
+    ================================================= -->
+
+    <section class="batch-card">
+
+        <div>
+
+            <div class="batch-label">
+                AUTOMATED RECOVERY
+            </div>
+
+            <h2>
+                AI Batch Recovery
+            </h2>
+
+            <p>
+                Process failed transactions through the AI recovery engine.
+            </p>
+
+        </div>
+
+
+        <button
+            class="recover-all-btn"
+            onclick="runBatchRecovery()"
+        >
+            Run AI Recovery
+        </button>
+
+    </section>
+
+
+    <!-- =================================================
+         ANALYTICS + TEST PAYMENT
+    ================================================= -->
+
+    <div class="dashboard-two-column">
+
+
+        <!-- ANALYTICS -->
+
+        <section class="dashboard-panel analytics-dashboard">
+
+            <div class="panel-heading">
+
+                <div>
+
+                    <div class="panel-eyebrow">
+                        RECOVERY INTELLIGENCE
+                    </div>
+
+                    <h2>
+                        Analytics
+                    </h2>
+
+                    <p>
+                        Understand recovery actions and failure patterns
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="charts-grid">
+
+
+                <!-- BAR CHART -->
+
+                <div class="chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+
+                            <h3>
+                                Action Distribution
+                            </h3>
+
+                            <p>
+                                Recovery actions selected by AI
+                            </p>
+
+                        </div>
+
+                        <div class="chart-icon blue">
+                            ▥
+                        </div>
+
+                    </div>
+
+
+                    <div class="chart-wrapper">
+
+                        <svg
+                            id="actionBarChart"
+                            viewBox="0 0 520 250"
+                            preserveAspectRatio="none"
+                        ></svg>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DONUT CHART -->
+
+                <div class="chart-card">
+
+                    <div class="chart-header">
+
+                        <div>
+
+                            <h3>
+                                Root Cause Distribution
+                            </h3>
+
+                            <p>
+                                Failed-payment causes
+                            </p>
+
+                        </div>
+
+                        <div class="chart-icon purple">
+                            ◉
+                        </div>
+
+                    </div>
+
+
+                    <div class="donut-area">
+
+                        <svg
+                            id="causeDonutChart"
+                            viewBox="0 0 220 220"
+                        ></svg>
+
+
+                        <div
+                            id="causeLegend"
+                            class="chart-legend"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TEST PAYMENT -->
+
+        <section class="test-payment-card">
+
+            <div class="test-header">
+
+                <div class="panel-eyebrow">
+                    SIMULATION
+                </div>
+
+                <h2>
+                    ⚡ Test Payment
+                </h2>
+
+                <p>
+                    Simulate a failed payment event
+                </p>
+
+            </div>
+
+
+            <label>
+                Customer Name
+            </label>
+
+            <input
+                id="testCustomer"
+                type="text"
+                value="Aarav Sharma"
+            >
+
+
+            <label>
+                Email
+            </label>
+
+            <input
+                id="testEmail"
+                type="email"
+                value="aarav.sharma@example.com"
+            >
+
+
+            <label>
+                Payment Amount
+            </label>
+
+            <input
+                id="testAmount"
+                type="number"
+                value="2499"
+            >
+
+
+            <label>
+                Payment Status
+            </label>
+
+            <select id="testStatus">
+
+                <option value="failed">
+                    Failed
+                </option>
+
+                <option value="success">
+                    Success
+                </option>
+
+            </select>
+
+
+            <label>
+                Failure Reason
+            </label>
+
+            <select id="testReason">
+
+                <option value="insufficient_funds">
+                    Insufficient Funds
+                </option>
+
+                <option value="timeout">
+                    Timeout
+                </option>
+
+                <option value="network_error">
+                    Network Error
+                </option>
+
+                <option value="bank_error">
+                    Bank Error
+                </option>
+
+            </select>
+
+
+            <button
+                class="test-primary"
+                onclick="runTestPayment()"
+            >
+                ⚡ Trigger Recovery
+            </button>
+
+
+            <button
+                class="test-secondary"
+                onclick="generateTestTransactions()"
+            >
+                ↻ Refresh Transactions
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <!-- =================================================
+         QUICK ACTIONS
+    ================================================= -->
+
+    <div class="quick-grid">
+
+
+        <button
+            class="quick-card"
+            onclick="showSection('risk-section')"
+        >
+
+            <div class="quick-icon blue">
+                △
+            </div>
+
+            <div>
+
+                <strong>
+                    Review At-Risk Payments
+                </strong>
+
+                <span>
+                    Diagnose failed transactions
+                </span>
+
+            </div>
+
+            <b>
+                →
+            </b>
+
+        </button>
+
+
+        <button
+            class="quick-card"
+            onclick="showSection('analytics-section')"
+        >
+
+            <div class="quick-icon purple">
+                ▥
+            </div>
+
+            <div>
+
+                <strong>
+                    View Analytics
+                </strong>
+
+                <span>
+                    Understand recovery patterns
+                </span>
+
+            </div>
+
+            <b>
+                →
+            </b>
+
+        </button>
+
+
+        <button
+            class="quick-card"
+            onclick="showSection('audit-section')"
+        >
+
+            <div class="quick-icon green">
+                ✓
+            </div>
+
+            <div>
+
+                <strong>
+                    Audit Recovery Actions
+                </strong>
+
+                <span>
+                    Track every recovery event
+                </span>
+
+            </div>
+
+            <b>
+                →
+            </b>
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AT-RISK PAYMENTS
+===================================================== -->
+
+<section
+    id="risk-section"
+    class="app-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                PAYMENT OPERATIONS
+            </div>
+
+            <h1>
+                At-Risk Transactions
+            </h1>
+
+            <p>
+                Payments requiring AI intervention
+            </p>
+
+        </div>
+
+
+        <span
+            class="count-badge large-badge"
+            id="riskCount"
+        >
+            0
+        </span>
+
+    </div>
+
+
+    <div class="content-card">
+
+        <div class="filter-top">
+
+            <div>
+
+                <h2>
+                    Recovery Priority
+                </h2>
+
+                <p>
+                    Filter transactions by risk level
+                </p>
+
+            </div>
+
+
+            <div class="search-wrap">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input
+                    id="transactionSearch"
+                    type="text"
+                    placeholder="Search transaction ID..."
+                    oninput="applyTransactionFilters()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <div class="filter-buttons">
+
+            <button
+                class="filter-btn active"
+                data-risk-filter="All"
+                onclick="setRiskFilter('All')"
+            >
+                All
+            </button>
+
+
+            <button
+                class="filter-btn high-filter"
+                data-risk-filter="High"
+                onclick="setRiskFilter('High')"
+            >
+                High
+            </button>
+
+
+            <button
+                class="filter-btn medium-filter"
+                data-risk-filter="Medium"
+                onclick="setRiskFilter('Medium')"
+            >
+                Medium
+            </button>
+
+
+            <button
+                class="filter-btn low-filter"
+                data-risk-filter="Low"
+                onclick="setRiskFilter('Low')"
+            >
+                Low
+            </button>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Transaction
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Failure
+                        </th>
+
+                        <th>
+                            Method
+                        </th>
+
+                        <th>
+                            Attempts
+                        </th>
+
+                        <th>
+                            Risk
+                        </th>
+
+                        <th>
+                            AI Action
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="riskTable">
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="loading"
+                        >
+                            Loading transactions...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ANALYTICS PAGE
+===================================================== -->
+
+<section
+    id="analytics-section"
+    class="app-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                RECOVERY INTELLIGENCE
+            </div>
+
+            <h1>
+                Recovery Analytics
+            </h1>
+
+            <p>
+                Visualize recovery actions and payment failure patterns
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="analytics-page-grid">
+
+
+        <div class="analytics-card large-chart-card">
+
+            <div class="analytics-card-header">
+
+                <div>
+
+                    <h3>
+                        Action Distribution
+                    </h3>
+
+                    <p>
+                        Recovery actions selected by the system
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="page-chart-box">
+
+                <svg
+                    id="pageActionChart"
+                    viewBox="0 0 650 300"
+                    preserveAspectRatio="none"
+                ></svg>
+
+            </div>
+
+        </div>
+
+
+        <div class="analytics-card large-chart-card">
+
+            <div class="analytics-card-header">
+
+                <div>
+
+                    <h3>
+                        Root Cause Distribution
+                    </h3>
+
+                    <p>
+                        Current failed-payment causes
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="page-donut-area">
+
+                <svg
+                    id="pageCauseChart"
+                    viewBox="0 0 260 260"
+                ></svg>
+
+                <div
+                    id="pageCauseLegend"
+                    class="chart-legend"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AI RECOVERY
+===================================================== -->
+
+<section
+    id="recovery-section"
+    class="app-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                AI DECISION ENGINE
+            </div>
+
+            <h1>
+                AI Decision Center
+            </h1>
+
+            <p>
+                Diagnose, explain and safely recover failed payments
+            </p>
+
+        </div>
+
+
+        <span class="ai-badge">
+            AI ENGINE
+        </span>
+
+    </div>
+
+
+    <div
+        id="decisionPanel"
+        class="empty-decision"
+    >
+
+        <div class="empty-icon">
+            AI
+        </div>
+
+        <h3>
+            No transaction selected
+        </h3>
+
+        <p>
+            Click "Diagnose" on any transaction above.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     AUDIT TRAIL
+===================================================== -->
+
+<section
+    id="audit-section"
+    class="app-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                COMPLIANCE & TRACEABILITY
+            </div>
+
+            <h1>
+                Audit Trail
+            </h1>
+
+            <p>
+                Complete recovery action history
+            </p>
+
+        </div>
+
+
+        <button
+            class="refresh-btn"
+            onclick="loadAuditLog()"
+        >
+            ↻ Refresh Log
+        </button>
+
+    </div>
+
+
+    <div class="content-card audit-card">
+
+        <div class="table-heading">
+
+            <div>
+
+                <h2>
+                    Recovery Action History
+                </h2>
+
+                <p>
+                    Every automated action is recorded
+                </p>
+
+            </div>
+
+
+            <span class="audit-badge">
+                Auditable
+            </span>
+
+        </div>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Time
+                        </th>
+
+                        <th>
+                            Transaction
+                        </th>
+
+                        <th>
+                            Amount
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                        <th>
+                            Attempt
+                        </th>
+
+                        <th>
+                            Result
+                        </th>
+
+                        <th>
+                            Recovered
+                        </th>
+
+                        <th>
+                            Message
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="auditTable">
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="loading"
+                        >
+                            Loading audit trail...
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     HOW IT HELPS
+===================================================== -->
+
+<section
+    id="help-section"
+    class="app-section"
+>
+
+    <div class="centered-header page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                PLATFORM OVERVIEW
+            </div>
+
+            <h1>
+                How RevivePay Helps
+            </h1>
+
+            <p>
+                From failed payment to controlled recovery
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="help-grid">
+
+
+        <div class="help-card">
+
+            <div class="help-icon blue">
+                △
+            </div>
+
+            <span class="help-number">
+                01
+            </span>
+
+            <h2>
+                Detects Risk
+            </h2>
+
+            <p>
+                Identifies failed transactions and calculates risk using payment conditions, attempts and transaction value.
+            </p>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <div class="help-icon purple">
+                ✦
+            </div>
+
+            <span class="help-number">
+                02
+            </span>
+
+            <h2>
+                Explains the Cause
+            </h2>
+
+            <p>
+                The AI diagnosis identifies the likely payment problem and estimates recovery probability.
+            </p>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <div class="help-icon blue">
+                ↗
+            </div>
+
+            <span class="help-number">
+                03
+            </span>
+
+            <h2>
+                Chooses an Action
+            </h2>
+
+            <p>
+                The system selects a bounded response such as retry, payment reminder or escalation.
+            </p>
+
+        </div>
+
+
+        <div class="help-card">
+
+            <div class="help-icon green">
+                ✓
+            </div>
+
+            <span class="help-number">
+                04
+            </span>
+
+            <h2>
+                Protects Revenue
+            </h2>
+
+            <p>
+                Successful recoveries are measured while repeated or unsafe recovery attempts are stopped.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<section
+    id="faq-section"
+    class="app-section"
+>
+
+    <div class="centered-header page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                QUICK ANSWERS
+            </div>
+
+            <h1>
+                Frequently Asked Questions
+            </h1>
+
+            <p>
+                Quick explanation of the RevivePay recovery engine
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="faq-grid">
+
+
+        <div class="faq-card">
+
+            <button onclick="toggleFaq(this)">
+
+                <span>
+                    What does RevivePay recover?
+                </span>
+
+                <b>
+                    +
+                </b>
+
+            </button>
+
+            <div class="faq-answer">
+
+                RevivePay focuses on failed payment transactions and attempts controlled recovery based on the diagnosed failure reason.
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-card">
+
+            <button onclick="toggleFaq(this)">
+
+                <span>
+                    Why are some payments escalated?
+                </span>
+
+                <b>
+                    +
+                </b>
+
+            </button>
+
+            <div class="faq-answer">
+
+                Escalation is used when automatic recovery is not appropriate, when failures repeat, or when the retry safety threshold has been reached.
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-card">
+
+            <button onclick="toggleFaq(this)">
+
+                <span>
+                    How does the system avoid duplicate recovery?
+                </span>
+
+                <b>
+                    +
+                </b>
+
+            </button>
+
+            <div class="faq-answer">
+
+                The recovery engine checks its recovery history before performing another recovery action.
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-card">
+
+            <button onclick="toggleFaq(this)">
+
+                <span>
+                    What is the recovery rate?
+                </span>
+
+                <b>
+                    +
+                </b>
+
+            </button>
+
+            <div class="faq-answer">
+
+                Recovery rate represents recovered revenue compared with the revenue currently at risk.
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-card">
+
+            <button onclick="toggleFaq(this)">
+
+                <span>
+                    What makes an action safe?
+                </span>
+
+                <b>
+                    +
+                </b>
+
+            </button>
+
+            <div class="faq-answer">
+
+                Recovery actions are bounded by retry limits, duplicate protection and escalation rules.
+
+            </div>
+
+        </div>
+
+
+        <div class="faq-card">
+
+            <button onclick="toggleFaq(this)">
+
+                <span>
+                    Can AI directly perform unrestricted payments?
+                </span>
+
+                <b>
+                    +
+                </b>
+
+            </button>
+
+            <div class="faq-answer">
+
+                No. RevivePay uses bounded recovery actions and keeps financial operations controlled.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
+
+<section
+    id="settings-section"
+    class="app-section"
+>
+
+    <div class="page-header">
+
+        <div>
+
+            <div class="eyebrow">
+                PLATFORM CONFIGURATION
+            </div>
+
+            <h1>
+                Settings
+            </h1>
+
+            <p>
+                Review RevivePay recovery configuration
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-grid">
+
+
+        <div class="settings-card">
+
+            <div class="settings-icon blue">
+                ⚙
+            </div>
+
+            <div>
+
+                <h3>
+                    Recovery Mode
+                </h3>
+
+                <p>
+                    AI-assisted bounded recovery
+                </p>
+
+            </div>
+
+            <span class="setting-status">
+                Active
+            </span>
+
+        </div>
+
+
+        <div class="settings-card">
+
+            <div class="settings-icon green">
+                ✓
+            </div>
+
+            <div>
+
+                <h3>
+                    Duplicate Protection
+                </h3>
+
+                <p>
+                    Prevent repeated successful recovery
+                </p>
+
+            </div>
+
+            <span class="setting-status">
+                Enabled
+            </span>
+
+        </div>
+
+
+        <div class="settings-card">
+
+            <div class="settings-icon orange">
+                !
+            </div>
+
+            <div>
+
+                <h3>
+                    Retry Safety Limit
+                </h3>
+
+                <p>
+                    Automatic retries stop at configured threshold
+                </p>
+
+            </div>
+
+            <span class="setting-status">
+                Protected
+            </span>
+
+        </div>
+
+
+        <div class="settings-card">
+
+            <div class="settings-icon purple">
+                AI
+            </div>
+
+            <div>
+
+                <h3>
+                    AI Diagnosis
+                </h3>
+
+                <p>
+                    Root cause and recovery recommendation
+                </p>
+
+            </div>
+
+            <span class="setting-status">
+                Ready
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="settings-note">
+
+        <strong>
+            Safety & Data Integrity
+        </strong>
+
+        <p>
+            RevivePay uses controlled recovery actions, retry limits and duplicate protection. Recovery events are recorded in the audit trail so that system activity can be reviewed and traced.
+        </p>
+
+        <div class="integrity-items">
+
+            <span>
+                ✓ Duplicate Protection
+            </span>
+
+            <span>
+                ✓ Bounded Recovery
+            </span>
+
+            <span>
+                ✓ Audit Logging
+            </span>
+
+            <span>
+                ✓ Retry Limits
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+    RevivePay © 2026 | AI Revenue Recovery Platform
+</footer>
+
+</main>
+
+
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
+
+<div
+    id="notification"
+    class="notification"
+></div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
