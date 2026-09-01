@@ -1,10 +1,17 @@
+import os
+import sys
+
+# Add backend folder to Python path
+backend_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "backend")
+sys.path.insert(0, backend_path)
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.risk_detector import get_at_risk_transactions
-from backend.ai_agent import diagnose_payment
+from risk_detector import get_at_risk_transactions
+from ai_agent import diagnose_payment
 
-from backend.recovery import (
+from recovery import (
     execute_recovery,
     get_recovery_summary,
     process_batch,
