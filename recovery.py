@@ -13,9 +13,7 @@ from ai_agent import diagnose_payment
 
 
 BASE_DIR = os.path.dirname(
-    os.path.dirname(
-        os.path.abspath(__file__)
-    )
+    os.path.abspath(__file__)
 )
 
 
@@ -98,7 +96,9 @@ def read_log():
     try:
 
         df = pd.read_csv(
-            LOG_PATH
+            LOG_PATH,
+            dtype=str,
+            keep_default_na=False
         )
 
     except Exception:
@@ -209,12 +209,15 @@ def atomic_write(
 
         with open(
             temp_path,
-            "rb"
+            "r+b"
         ) as file:
-
-            os.fsync(
-                file.fileno()
-            )
+            file.flush()
+            try:
+                os.fsync(
+                    file.fileno()
+                )
+            except OSError:
+                pass
 
 
         os.replace(
@@ -284,7 +287,9 @@ def verify_file(
     try:
 
         df = pd.read_csv(
-            path
+            path,
+            dtype=str,
+            keep_default_na=False
         )
 
     except Exception:
