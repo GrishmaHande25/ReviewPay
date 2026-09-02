@@ -1168,8 +1168,13 @@ def escalate_to_human(
         "result":
             "escalated",
 
-        "recovered_amount":
+                "recovered_amount":
             0,
+
+        "attempt_number":
+            transaction[
+                "attempt_count"
+            ],
 
         "message":
             message
