@@ -122,20 +122,64 @@ def _read_csv_log():
 
 
 def _normalize_database_log(rows):
+    """
+    Normalize Supabase values back to the exact representations
+    used when the audit record hash was originally calculated.
+
+    PostgreSQL can change the display format of timestamps and
+    numeric values when a row is read back. Hash verification must
+    use the same canonical values that were used at insert time.
+    """
     if not rows:
         return pd.DataFrame(columns=LOG_COLUMNS)
 
     normalized = []
+
     for row in rows:
         item = {}
+
         for column in LOG_COLUMNS:
             value = row.get(column, "")
+
             if value is None:
                 value = ""
-            item[column] = str(value)
+
+            if column == "timestamp" and value != "":
+                try:
+                    parsed = datetime.fromisoformat(
+                        str(value).replace("Z", "+00:00")
+                    )
+                    value = parsed.isoformat()
+                except (ValueError, TypeError):
+                    value = str(value)
+
+            elif column in [
+                "amount",
+                "recovered_amount"
+            ] and value != "":
+                try:
+                    value = str(float(value))
+                except (ValueError, TypeError):
+                    value = str(value)
+
+            elif column == "attempt_number" and value != "":
+                try:
+                    value = str(int(value))
+                except (ValueError, TypeError):
+                    value = str(value)
+
+            else:
+                value = str(value)
+
+            item[column] = value
+
         normalized.append(item)
 
-    df = pd.DataFrame(normalized, columns=LOG_COLUMNS)
+    df = pd.DataFrame(
+        normalized,
+        columns=LOG_COLUMNS
+    )
+
     return df.fillna("")
 
 
